@@ -1,0 +1,405 @@
+{
+	"info": {
+		"_postman_id": "01d02ce6-1e3c-4e48-a199-6e671be0b364",
+		"name": "ASK_TESTS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "29716930",
+		"_collection_link": "https://www.postman.com/liggi3/workspace/ask-aug23/collection/29716930-01d02ce6-1e3c-4e48-a199-6e671be0b364?action=share&source=collection_link&creator=29716930"
+	},
+	"item": [
+		{
+			"name": "/authorization - [Student Sign In]",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 200 ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"pm.test(\"Body matches user role\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"STUDENT\");",
+							"});",
+							"",
+							"var jsonData = pm.response.json();",
+							"pm.environment.set(\"studentToken\", jsonData.token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"strictSSL": false
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{studentToken}}"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"andreybutovo@trulyfreeschool.org\",\n  \"password\": \"ABCD1234\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl2}}sign-in?",
+					"host": [
+						"{{baseUrl2}}sign-in"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Student 404 Error Sign In]",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 200 ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"pm.test(\"Body matches user role\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"STUDENT\");",
+							"});",
+							"",
+							"var jsonData = pm.response.json();",
+							"pm.environment.set(\"studentToken\", jsonData.token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"strictSSL": false
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{studentToken}}"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"andreybutovo@trulyfreeschool.org\",\n  \"password\": \"ABCD1234\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl2}}sign-in?",
+					"host": [
+						"{{baseUrl2}}sign-in"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/authorization - [Teacher Sign-In] Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 500 ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"pm.test(\"Body matches user role\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"TEACHER\");",
+							"});",
+							"",
+							"var jsonData = pm.response.json();",
+							"pm.environment.set(\"teacherToken\", jsonData.token);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFobWVkZHpoYW1pZXZAaGFpaG4ubmV0IiwiaWF0IjoxNjk1MTI2OTAyLCJleHAiOjE2OTUyMTMzMDJ9.FQatKaFlOjj45tFhE2_3mhZaJaC6o7GxoEUZc6GBC7U"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"ahmeddzhamiev@haihn.net\",\n  \"password\": \"abc123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl2}}sign-in?",
+					"host": [
+						"{{baseUrl2}}sign-in"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/quiz - [Create New]",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{teacherToken}}"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Demo Quiz ABC12321\",\n  \"totalScore\": 18,\n  \"passingPercentage\": 75,\n  \"showStopperQuestion\": 1,\n  \"questions\": [\n    {\n      \"type\": \"TEXTUAL\",\n      \"question\": \"What is your name?\",\n      \"score\": 5\n    },\n    {\n      \"type\": \"SINGLE_CHOICE\",\n      \"question\": \"Which city is city largest in California?\",\n      \"score\": 7,\n      \"answer\": 2,\n      \"hasOtherOption\": false,\n      \"options\": [\n        \"San Francisco\",\n        \"Sacramento\",\n        \"Los Angeles\",\n        \"Redding\"\n      ]\n    },\n    {\n      \"type\": \"MULTIPLE_CHOICE\",\n      \"question\": \"Who was apple founded by?\",\n      \"score\": 6,\n      \"answers\": [\n        0,\n        1,\n        2\n      ],\n      \"hasOtherOption\": true,\n      \"options\": [\n        \"Steve Jobs\",\n        \"Steve Wozniak\",\n        \"Ronald Wayne\",\n        \"Ronald Reagan\"\n      ]\n    }\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseUrl2}}quiz"
+			},
+			"response": []
+		},
+		{
+			"name": "/quiz - [Update]",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFobWVkZHpoYW1pZXZAaGFpaG4ubmV0IiwiaWF0IjoxNjk1MDYyNDU2LCJleHAiOjE2OTUxNDg4NTZ9.s9LGJ74znzheuz64Zb8nTNVxNCIeVFsLTNa2duwHtXM"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Demo Quiz ABC123\",\n  \"totalScore\": 18,\n  \"passingPercentage\": 75,\n  \"showStopperQuestion\": 1,\n  \"questions\": [\n    {\n      \"type\": \"TEXTUAL\",\n      \"question\": \"What is your name?\",\n      \"score\": 5\n    },\n    {\n      \"type\": \"SINGLE_CHOICE\",\n      \"question\": \"Which city is city smallest in California?\",\n      \"score\": 7,\n      \"answer\": 2,\n      \"hasOtherOption\": false,\n      \"options\": [\n        \"San Francisco\",\n        \"Sacramento\",\n        \"Los Angeles\",\n        \"Redding\"\n      ]\n    },\n    {\n      \"type\": \"MULTIPLE_CHOICE\",\n      \"question\": \"Who was apple founded by?\",\n      \"score\": 6,\n      \"answers\": [\n        0,\n        1,\n        2\n      ],\n      \"hasOtherOption\": true,\n      \"options\": [\n        \"Steveydoo Jobs\",\n        \"Steveydoo Wozniak\",\n        \"Ronaldoalo Wayne\",\n        \"Ronaldoalo Reagan\"\n      ]\n    }\n  ],\n  \"id\": 52\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseUrl2}}quiz"
+			},
+			"response": []
+		},
+		{
+			"name": "/assignment - [Assign to Student]",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFobWVkZHpoYW1pZXZAaGFpaG4ubmV0IiwiaWF0IjoxNjk1MDYyNDU2LCJleHAiOjE2OTUxNDg4NTZ9.s9LGJ74znzheuz64Zb8nTNVxNCIeVFsLTNa2duwHtXM"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"quizId\": 16345,\n  \"userIds\": [11216, 11217]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseUrl2}}assignment"
+			},
+			"response": []
+		},
+		{
+			"name": "/authorization - [Student Sign In] Copy",
+			"protocolProfileBehavior": {
+				"strictSSL": false
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFuZHJleWJ1dG92b0B0cnVseWZyZWVzY2hvb2wub3JnIiwiaWF0IjoxNjk1MDUzNDA3LCJleHAiOjE2OTUxMzk4MDd9.8Va30X2XQuZa0KGpmSpIfh_KUKBEzO0c2SfV0kmiY6g"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"andreybutovo@trulyfreeschool.org\",\n  \"password\": \"ABCD1234\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl2}}sign-in?",
+					"host": [
+						"{{baseUrl2}}sign-in"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/assignment - [My Assignments]",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFuZHJleWJ1dG92b0B0cnVseWZyZWVzY2hvb2wub3JnIiwiaWF0IjoxNjk1MDYzNzM5LCJleHAiOjE2OTUxNTAxMzl9.jFzjzODvQH7_67bzPVH47sG-s89BNnllkL1-ejLTpCg"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{baseUrl2}}my-assignments?",
+					"host": [
+						"{{baseUrl2}}my-assignments"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/student-api - [Submit Assignment]",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFuZHJleWJ1dG92b0B0cnVseWZyZWVzY2hvb2wub3JnIiwiaWF0IjoxNjk1MDY0NTIyLCJleHAiOjE2OTUxNTA5MjJ9.5sEvJWfmIdNLpRtYZ3zbajJlbz21fqt9A4Hvxip4-s8"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"assignmentId\": 12,\n  \"answers\": [\n    {\n      \"answer\": [\n        0,\n        2,\n        3,\n        4\n      ],\n      \"textAnswer\": \"This is my answer\"\n    }\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseUrl2}}submit-assignment"
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": {
+			"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFuZHJleWJ1dG92b0B0cnVseWZyZWVzY2hvb2wub3JnIiwiaWF0IjoxNjk1MDUzNDA3LCJleHAiOjE2OTUxMzk4MDd9.8Va30X2XQuZa0KGpmSpIfh_KUKBEzO0c2SfV0kmiY6g"
+		}
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl2",
+			"value": "http://ask-qa.portnov.com/api/v1",
+			"type": "string"
+		},
+		{
+			"key": "studentToken",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFuZHJleWJ1dG92b0B0cnVseWZyZWVzY2hvb2wub3JnIiwiaWF0IjoxNjk1MDUzNDA3LCJleHAiOjE2OTUxMzk4MDd9.8Va30X2XQuZa0KGpmSpIfh_KUKBEzO0c2SfV0kmiY6g",
+			"type": "string"
+		},
+		{
+			"key": "teacherToken",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZpZnRpZXNubWFAY2hlZnNjcmVzdC5jb20iLCJpYXQiOjE2OTQ2MjU2NjMsImV4cCI6MTY5NDcxMjA2M30.gZHqk7fhEWtdYTuKARmzHvVdC13jSjrF0YBnSOCm_DY",
+			"type": "string"
+		}
+	]
+}
